@@ -1,0 +1,68 @@
+<div class="px-3">
+    <div class="theme-container">
+        <mat-sidenav-container class="single-course mt-3">
+            <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" position="end">
+                    <div class="widget">
+                        <mat-card>
+                            <img mat-card-image src="assets/images/terrains/{{etablissement?.image}}">
+                        </mat-card>
+                    </div>
+            </mat-sidenav>
+            <mat-sidenav-content ngClass.gt-sm="distance">
+                <mat-card fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center center">
+                    <div>
+                        <h1 class="uppercase" ngClass.xs="text-center">{{etablissement?.name}}</h1>
+                        <p fxLayout="row" fxLayoutAlign.xs="center" class="address mb-0">
+                            <mat-icon class="text-muted">location_on</mat-icon>
+                            <span>{{etablissement?.address}}</span>
+                        </p>
+                        <p fxLayoutAlign="center center"><mat-icon class="text-muted">help</mat-icon><span class="mx-2">Terrain {{terrain.type}}</span></p>
+                    </div>
+                </mat-card>
+                <div fxLayout="row" fxLayoutAlign="center center" class="my-3">
+                    <mat-card [style.max-width.px]="500">
+                        <form [formGroup]="rendezVousForm" (ngSubmit)="onRendezVousFormSubmit()">
+                            <mat-form-field appearance="outline" class="w-100" (click)="pickerDateTo.open()">
+                                <mat-label>{{ 'date.debut' | translate}}</mat-label>
+                                <input matInput [matDatepicker]="pickerDateTo" [min]="minDate"
+                                       placeholder="Choisir une date"
+                                       formControlName="dateStart" required autocomplete="off">
+                                <mat-datepicker-toggle matSuffix [for]="pickerDateTo"></mat-datepicker-toggle>
+                                <mat-datepicker #pickerDateTo></mat-datepicker>
+                                <mat-error *ngIf="reservationForm.get('dateStart').errors?.required">
+                                        {{ 'requiredDateFromMessage' | translate }}
+                                </mat-error>
+                            </mat-form-field>
+
+                            <div fxLayout="column" fxLayoutAlign="center stretch" class="row">
+                                <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
+                                    <mat-form-field  appearance="outline" class="w-50 mt-2">
+                                        <mat-icon matPrefix class="mr-1 text-muted">av_timer</mat-icon>
+                                        <mat-label>{{ 'terrain.from' | translate}}</mat-label>
+                                        <input matInput type="time" placeholder="Heure début" formControlName="heureStart" required autocomplete="off">
+                                    </mat-form-field>
+                                    <mat-form-field  appearance="outline" class="w-50 mt-2">
+                                        <mat-icon matPrefix class="mr-1 text-muted">av_timer</mat-icon>
+                                        <mat-label>{{ 'terrain.to' | translate}}</mat-label>
+                                        <input matInput type="time" placeholder="Heure fin" formControlName="heureEnd" required autocomplete="off">
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                            <div class="text-center mt-2"> 
+                                <button *ngIf="terrain?.disponible" mat-raised-button color="primary" type="submit">
+                                    {{ 'terrain.button' | translate}}
+                                </button>
+                            </div> 
+                        </form>
+                        <div class="text-center mt-2"> 
+                            <button  *ngIf="!terrain?.disponible" mat-raised-button style="color: red;">
+                                {{ 'terrain.disponibilite' | translate}}
+                            </button>
+                        </div>    
+                    </mat-card>
+                </div>
+
+            </mat-sidenav-content>
+        </mat-sidenav-container>
+    </div>
+</div>

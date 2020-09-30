@@ -1,0 +1,42 @@
+<mat-form-field appearance="outline" class="w-100">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="{{'filterRendezVous' | translate}}" autocomplete="off">
+</mat-form-field>
+<div class="table-wrapper"> 
+    <table mat-table [dataSource]="dataSource" matSort class="w-100">
+  
+      <!-- Etablissement Column -->
+      <ng-container matColumnDef="etablissement">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Etablissement </th>
+        <td mat-cell *matCellDef="let rendezVous"><a [routerLink]="['/etablissements', etablissement?.id]" class="reservation-name">{{rendezVous.etablissement.name}}</a></td>
+      </ng-container> 
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="dateRendezVous">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date RendezVous</th>
+        <td mat-cell *matCellDef="let rendezVous"> {{rendezVous.dateStart}} </td>
+      </ng-container> 
+
+      <!-- Prix Column -->
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> {{'price' | translate}}</th>
+        <td mat-cell *matCellDef="let rendezVous"> {{rendezVous.price}} €</td>
+      </ng-container> 
+
+      <!-- Actions Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> {{'actions' | translate}} </th>
+        <td mat-cell *matCellDef="let rendezVous">
+            <button mat-icon-button color="warn" (click)="remove(rendezVous)" matTooltip="{{'delete' | translate}}" class="remove">
+                <mat-icon>delete</mat-icon>
+            </button>
+
+        </td>
+      </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let rendezVous; columns: displayedColumns;">
+      </tr>
+    </table> 
+    <p *ngIf="dataSource?.data.length === 0" class="py-5 mb-0 text-center">{{'noDataAvailable' | translate}}</p> 
+</div>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>

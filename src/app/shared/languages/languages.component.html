@@ -1,0 +1,21 @@
+<a mat-button [matMenuTriggerFor]="langMenu" #langMenuTrigger="matMenuTrigger">
+    <ng-container *ngIf="translate.currentLang === 'fr'">
+        <img [src]="frenchFlag" width="18">
+        <span fxShow="false" fxShow.gt-md class="flag-name">{{ 'lang.fr' | translate }}</span>
+    </ng-container>
+    <ng-container *ngIf="translate.currentLang === 'en'">
+        <img [src]="englishFlag" width="18">
+        <span fxShow="false" fxShow.gt-md class="flag-name">{{ 'lang.en' | translate }}</span>
+    </ng-container>
+    <mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
+</a>
+<mat-menu #langMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-menu-panel">
+    <span (mouseleave)="langMenuTrigger.closeMenu()">
+        <button mat-menu-item (click)="changeLanguage('fr')">
+            <img [src]="frenchFlag" width="18" class="mat-elevation-z1"><span class="flag-name">{{ 'lang.fr' | translate }}</span>
+        </button>
+        <button mat-menu-item (click)="changeLanguage('en')">
+            <img [src]="englishFlag" width="18" class="mat-elevation-z1"><span class="flag-name">{{ 'lang.en' | translate }}</span>
+        </button>
+    </span>
+</mat-menu>

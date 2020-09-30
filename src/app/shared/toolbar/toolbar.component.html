@@ -1,0 +1,26 @@
+<mat-toolbar id="top-toolbar" class="top-toolbar">
+  <div class="theme-container" fxLayout="row" fxLayoutAlign="space-between center">
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <span fxHide="false" fxHide.gt-sm>
+        <button mat-button (click)="sidenavToggle()">
+          <mat-icon>menu</mat-icon>
+        </button> 
+      </span>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="end center" class="">
+      <app-languages></app-languages>
+      <app-auth-buttons *ngIf="!currentUser"></app-auth-buttons>
+      <app-user-menu *ngIf="currentUser" [currentUser]="currentUser"></app-user-menu>
+    </div>    
+  </div>           
+</mat-toolbar>  
+<mat-toolbar id="main-toolbar" class="mat-elevation-z2"> 
+  <div class="theme-container" fxLayout="row" fxLayoutAlign="space-between center">
+    <a *ngIf="currentUser" style="text-decoration: none;color: #1976d2;" routerLink="/" >{{'home' | translate}}</a> 
+    <div fxShow="false" fxShow.gt-sm class="horizontal-menu">            
+    </div> 
+    <div fxLayout="row" fxLayoutAlign="start center">
+     
+    </div>
+  </div>     
+</mat-toolbar>

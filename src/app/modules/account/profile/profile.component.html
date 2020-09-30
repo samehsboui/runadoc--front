@@ -1,0 +1,26 @@
+<div fxLayout="row wrap">
+    <form [formGroup]="infoForm" (ngSubmit)="updateProfileFormSubmit()"> 
+        <div fxFlex="100" fxFlex.gt-sm="100" class="p-3">
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{'name' | translate}}</mat-label>
+                <input matInput placeholder="{{'name' | translate}}" [(ngModel)]="currentUser.name" formControlName="name" required autocomplete="off">
+                <mat-error *ngIf="infoForm.controls.name.errors?.required">{{'requiredNameMessage' | translate}}</mat-error>
+                <mat-error *ngIf="infoForm.controls.name.hasError('minlength')">{{ 'invalidNameLength' | translate}}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="w-100">
+                <mat-label>{{ 'email' | translate }}</mat-label>
+                <input matInput placeholder="{{ 'email' | translate }}" [(ngModel)]="currentUser.email" formControlName="email" required autocomplete="off">
+                <mat-error *ngIf="infoForm.controls.email.errors?.required">{{ 'register.validation.required.email' | translate }}</mat-error>
+                <mat-error *ngIf="infoForm.controls.email.hasError('invalidEmail')">{{ 'register.validation.invalid.email' | translate }}</mat-error>
+            </mat-form-field>
+
+            <div class="mb-3">
+                <input-file placeholder="Image" formControlName="image" fileLimit="1" fileAccept="image/*" [linkEnabled]="false"></input-file>  
+            </div>
+            <div class="text-center mt-2">
+                <button mat-raised-button color="primary" type="submit">{{'updateProfile' | translate}}</button>
+            </div> 
+        </div>
+
+    </form>
+</div> 

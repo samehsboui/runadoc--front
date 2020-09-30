@@ -1,0 +1,31 @@
+<div class="section">
+    <div class="px-3">
+        <div class="theme-container">
+            <h1 class="section-title">{{ 'etablissements.reserver' | translate}}</h1>
+            <div  style="margin-left: 200px;">
+                <div class="swiper-container" fxLayoutAlign="center center" [swiper]="config"> 
+                    <div class="swiper-wrapper h-100">      
+                        <div *ngFor="let etablissement of etablissements" class="swiper-slide" style="width: 33%;">
+                            <mat-card>
+                                <img mat-card-image src="assets/images/etablissements/{{etablissement?.image}}" width="300px" height="190px" alt="" class="d-block">
+                                <mat-card-content>
+                                    <h2 class="fw-600">{{etablissement.name}}</h2>                                                                      
+                                    <p fxLayoutAlign="start center"><mat-icon color="primary">help</mat-icon><span class="mx-2">etablissement {{etablissement.type}}</span></p>
+                                    <p fxLayoutAlign="start center"><mat-icon color="primary">map</mat-icon><span class="mx-2">{{etablissement.address}}</span></p>
+                                    <p fxLayoutAlign="start center"><mat-icon color="primary">people_outline</mat-icon><span class="mx-2">{{etablissement.nbrePersonneReserve}} {{ 'etablissements.patients' | translate}}</span></p>
+                                </mat-card-content>
+                                <mat-divider></mat-divider>
+                                <mat-card-actions fxLayoutAlign="space-between center">  
+                                <a [routerLink]="['/etablissements', etablissement.id]" mat-button color="primary" class="uppercase">{{ 'etablissements.details' | translate}}</a>
+                                </mat-card-actions>                              
+                            </mat-card>
+                            
+                        </div>
+                    </div>                      
+                </div>
+            </div>   
+        </div>
+    </div>   
+</div>
+
+ 

@@ -1,0 +1,35 @@
+<mat-sidenav-container> 
+    <mat-sidenav [opened]="false" mode="over" #sidenav class="sidenav mat-elevation-z6">
+        <button mat-icon-button color="warn" class="close" (click)="sidenav.close()">
+           <mat-icon color="warn">close</mat-icon>
+        </button>
+        <div class="divider"></div>
+
+        <div perfectScrollbar class="vertical-menu-wrapper">
+            <app-vertical-menu [menuParentId]="0"></app-vertical-menu>
+        </div>
+
+    </mat-sidenav>
+
+    <mat-sidenav-content class="page-wrapper" fxLayout="column" fxLayoutAlign="start stretch">
+
+        <header [ngClass]="'toolbar-'+settings.toolbar" [class.has-bg-image]="settings.headerBgImage" [class.main-toolbar-fixed]="settings.mainToolbarFixed">
+
+            <app-toolbar (onMenuIconClick)="sidenav.toggle()"></app-toolbar>
+        
+        </header>
+          
+        <main [class.content-offset-to-top]="settings.contentOffsetToTop">
+            <router-outlet></router-outlet>              
+        </main>
+
+        <div class="sticky-footer-helper" fxFlex="grow"></div>
+
+        
+        <div *ngIf="showBackToTop" fxLayout="row" fxLayoutAlign="center center" class="back-to-top" (click)="scrollToTop()">
+            <mat-icon>arrow_upward</mat-icon>
+        </div>
+
+    </mat-sidenav-content> 
+    
+</mat-sidenav-container> 

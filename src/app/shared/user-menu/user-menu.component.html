@@ -1,0 +1,28 @@
+<a mat-button [matMenuTriggerFor]="userMenu" #userMenuTrigger="matMenuTrigger">
+    <mat-icon class="mat-icon-sm">person</mat-icon>
+    <span fxShow="false" fxShow.gt-sm class="mx-1">{{ 'account' | translate }}</span> 
+    <mat-icon class="mat-icon-sm caret">arrow_drop_down</mat-icon>
+</a>
+<mat-menu #userMenu="matMenu" [overlapTrigger]="false" xPosition="before" class="app-menu-panel user-menu">
+    <span (mouseleave)="userMenuTrigger.closeMenu()">
+        <div fxLayout="row" fxLayoutAlign="start center" class="user-info">                   
+            <img *ngIf="currentUser?.image" mat-card-avatar src="data:image/jpeg;base64,{{currentUser?.image}}" alt="user-image" width="50">
+            <img *ngIf="!currentUser?.image" mat-card-avatar src="/assets/images/others/user.jpg" alt="user-image" width="50">
+            <p class="m-0">{{currentUser.name}} <br></p>
+        </div>
+        <div class="divider"></div>
+        <a mat-menu-item routerLink="/account/profile"> 
+            <mat-icon class="mat-icon-sm">edit</mat-icon>
+            <span>{{'editProfile' | translate}}</span> 
+        </a>
+        <a mat-menu-item routerLink="/account/my-reservations"> 
+            <mat-icon class="mat-icon-sm">list</mat-icon>
+            <span>{{'myReservation' | translate}}</span> 
+        </a>
+        <div class="divider"></div>
+        <a mat-menu-item (click)="logout()"> 
+            <mat-icon class="mat-icon-sm">power_settings_new</mat-icon>
+            <span>{{'signOut' | translate}}</span> 
+        </a>
+    </span>
+</mat-menu>  
