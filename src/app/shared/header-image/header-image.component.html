@@ -5,7 +5,7 @@
     <div class="header-image-content" fxLayout="column" fxLayoutAlign="center center" [class.offset-bottom]="contentOffsetToTop" [class.home-page]="isHomePage"  [style.min-height.px]="contentMinHeight">
         <h1 *ngIf="title" class="title">{{title}}</h1>
         <div *ngIf="isHomePage" ngClass.gt-xs="mt-4" ngClass.xs="mt-3">
-          <a mat-raised-button routerLink="/account/my-reservations">{{'myReservation' | translate}}</a>
+          <a mat-raised-button routerLink="/account/my-rendezVous">{{'myRendezVous' | translate}}</a>
           <a mat-raised-button routerLink="/account/profile">{{'profile' | translate}}</a>      
         </div>
     </div>

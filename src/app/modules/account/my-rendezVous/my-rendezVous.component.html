@@ -7,7 +7,7 @@
       <!-- Etablissement Column -->
       <ng-container matColumnDef="etablissement">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Etablissement </th>
-        <td mat-cell *matCellDef="let rendezVous"><a [routerLink]="['/etablissements', etablissement?.id]" class="reservation-name">{{rendezVous.etablissement.name}}</a></td>
+        <td mat-cell *matCellDef="let rendezVous"><a [routerLink]="['/etablissements', etablissement?.id]" class="rendezVous-name">{{rendezVous.etablissement.name}}</a></td>
       </ng-container> 
 
       <!-- Date Column -->

@@ -20,7 +20,7 @@ export class AccountComponent implements OnInit, AfterViewInit {
   public sidenavOpen = true;
   public links = [
     { i18nKey: 'editProfile', name: '', href: 'profile', icon: 'edit' },
-    { i18nKey: 'myReservation', name: '', href: 'my-reservations', icon: 'list' },
+    { i18nKey: 'myRendezVous', name: '', href: 'my-rendezVous', icon: 'list' },
     { i18nKey: 'profile.updatePassword', name: '', href: 'update-password', icon: 'lock' }
   ];
   private currentUser: JwtResponse;

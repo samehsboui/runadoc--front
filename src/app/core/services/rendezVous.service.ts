@@ -25,8 +25,8 @@ export class RendezVousService {
     return this.http.get<RendezVous>(`${this.configService.getRendezVousURL()}/${id}`);
   }
 
-  createRendezVous(createReservationRequest: CreateRendezVousRequest): Observable<any> {
-    return this.http.post<any>(this.configService.getCreateRendezVousURL(), createReservationRequest);
+  createRendezVous(createRendezVousRequest: CreateRendezVousRequest): Observable<any> {
+    return this.http.post<any>(this.configService.getCreateRendezVousURL(), createRendezVousRequest);
   }
 
   deleteRendezVous(id: number): Observable<any> {
