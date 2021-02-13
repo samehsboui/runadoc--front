@@ -29,6 +29,10 @@ export class ConfigService {
         return this.baseURL + 'user/all';
     }
 
+    getAllUsersURL() {
+        return this.baseURL + 'user/allUsers';
+    }
+
     getProfileUpdateURL() {
         return this.baseURL + 'profile/updateInfo';
     }
@@ -43,6 +47,10 @@ export class ConfigService {
 
     getDeleteRendezVousURL() {
         return this.baseURL + 'rendezVous/delete';
+    }
+
+    getDeleteUserURL(){
+        return this.baseURL + 'user/delete'
     }
 
     getMyRendezVousURL() {

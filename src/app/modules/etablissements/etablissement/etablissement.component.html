@@ -4,7 +4,7 @@
             <mat-sidenav #sidenav [opened]="sidenavOpen" [mode]="sidenavOpen ? 'side' : 'over'" position="end">
                     <div class="widget">
                         <mat-card>
-                            <img mat-card-image src="assets/images/terrains/{{etablissement?.image}}">
+                            <img mat-card-image src="assets/images/etablissements/{{etablissement?.image}}">
                         </mat-card>
                     </div>
             </mat-sidenav>
@@ -16,7 +16,7 @@
                             <mat-icon class="text-muted">location_on</mat-icon>
                             <span>{{etablissement?.address}}</span>
                         </p>
-                        <p fxLayoutAlign="center center"><mat-icon class="text-muted">help</mat-icon><span class="mx-2">Terrain {{terrain.type}}</span></p>
+                        <p fxLayoutAlign="center center"><mat-icon class="text-muted">help</mat-icon><span class="mx-2">etablissement {{etablissement.type}}</span></p>
                     </div>
                 </mat-card>
                 <div fxLayout="row" fxLayoutAlign="center center" class="my-3">
@@ -29,7 +29,7 @@
                                        formControlName="dateStart" required autocomplete="off">
                                 <mat-datepicker-toggle matSuffix [for]="pickerDateTo"></mat-datepicker-toggle>
                                 <mat-datepicker #pickerDateTo></mat-datepicker>
-                                <mat-error *ngIf="reservationForm.get('dateStart').errors?.required">
+                                <mat-error *ngIf="rendezVousForm.get('dateStart').errors?.required">
                                         {{ 'requiredDateFromMessage' | translate }}
                                 </mat-error>
                             </mat-form-field>
@@ -38,25 +38,25 @@
                                 <div fxLayout="row" fxLayoutGap="40px" fxLayoutAlign="start center">
                                     <mat-form-field  appearance="outline" class="w-50 mt-2">
                                         <mat-icon matPrefix class="mr-1 text-muted">av_timer</mat-icon>
-                                        <mat-label>{{ 'terrain.from' | translate}}</mat-label>
+                                        <mat-label>{{ 'etablissement.from' | translate}}</mat-label>
                                         <input matInput type="time" placeholder="Heure début" formControlName="heureStart" required autocomplete="off">
                                     </mat-form-field>
                                     <mat-form-field  appearance="outline" class="w-50 mt-2">
                                         <mat-icon matPrefix class="mr-1 text-muted">av_timer</mat-icon>
-                                        <mat-label>{{ 'terrain.to' | translate}}</mat-label>
+                                        <mat-label>{{ 'etablissement.to' | translate}}</mat-label>
                                         <input matInput type="time" placeholder="Heure fin" formControlName="heureEnd" required autocomplete="off">
                                     </mat-form-field>
                                 </div>
                             </div>
                             <div class="text-center mt-2"> 
-                                <button *ngIf="terrain?.disponible" mat-raised-button color="primary" type="submit">
-                                    {{ 'terrain.button' | translate}}
+                                <button *ngIf="etablissement?.disponible" mat-raised-button color="primary" type="submit">
+                                    {{ 'etablissement.button' | translate}}
                                 </button>
                             </div> 
                         </form>
                         <div class="text-center mt-2"> 
-                            <button  *ngIf="!terrain?.disponible" mat-raised-button style="color: red;">
-                                {{ 'terrain.disponibilite' | translate}}
+                            <button  *ngIf="!etablissement?.disponible" mat-raised-button style="color: red;">
+                                {{ 'etablissement.disponibilite' | translate}}
                             </button>
                         </div>    
                     </mat-card>

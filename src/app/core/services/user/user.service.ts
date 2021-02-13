@@ -24,4 +24,12 @@ export class UserService {
     getAllUser(): Observable<UserResponse[]> {
         return this.http.get<UserResponse[]>(this.configService.getAllUserURL(), httpJsonOptions);
     }
+
+    getUserss(): Observable<any>{
+        return this.http.get(this.configService.getAllUsersURL(),httpJsonOptions );
+      }
+
+      deleteUser(id: number): Observable<any> {
+        return this.http.delete(`${this.configService.getDeleteUserURL()}/${id}`);
+      }
 }
